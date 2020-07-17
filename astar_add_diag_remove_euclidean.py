@@ -4,23 +4,10 @@ from queue import PriorityQueue
 import time
 
 ###########################################################
-#   This is the implementation of the a* path finding algorithm, it has draw functions that can be
-#	switched on or off to visualize the process of the algorithm and are denoted in the code
-#	It is a very slightly modified version of the code demonstrated here: https://www.youtube.com/watch?v=JtiK0DOeI4A
-# 
-#	Modifications include some spelling changes as well as include using Euclidean distance instead of Manhattan distance
-#	as used in the original video. Additionally, new functions to test performance were added as well as commenting the code
-#	in my own words for further understanding
-#
-#	I wanted to test the performance differences among the two and so I have included functions to help record and keep track
-#	of the time used to compute and the number of spots visited
-#	
-#	From testing it was clear that using the Manhattan distance was consistently faster than the Euclidean distance
-#	and never searched more spots than the Euclidean distance and would usually traverse less spots than using the Euclidean distance.
-#   Using the Euclidean distance resulted in times approximately 2-3% slower. Based on the fact that
-#	the number of spots traversed is extremely similar then my guess would be that because the calculation of 
-#	Euclidean distance requires one more operation for each calculation that this is the main reason it is slower. 
-#	My belief is that Euclidean would benefit if the path could travel diagonally which we will see if this holds when I implement such.
+#   This is built onto the astar.py file.
+#	Added: 
+#	Ability for the path to move diagonally through open areas.
+#	Algorithm now handles different distances between two Spots
 #
 
 
@@ -65,8 +52,6 @@ class Spot:
 
 		self.neighbours = {}
 		self.total_rows = total_rows
-
-		self.moving_path = []
 
 	def get_pos(self):
 		return self.row, self.col
